@@ -1,0 +1,112 @@
+class App extends React.Component {
+  constructor() {
+    super();
+
+    this.state = {
+      candidatename: '',
+      vacancy: '',
+      hourlyrate: '',
+      startdate: '',
+      items: []
+    }
+  };
+
+  handleFormSubmit = (e) => {
+    e.preventDefault();
+
+    let items = [...this.state.items];
+
+    items.push({candidatename: this.state.candidatename, vacancy: this.state.vacancy, hourlyrate: this.state.hourlyrate, startdate: this.state.startdate});
+
+    this.setState({
+      items,
+      candidatename: '',
+      vacancy: '',
+      hourlyrate: '',
+      startdate: ''
+    });
+  };
+
+  handleInputChange = (e) => {
+    let input = e.target;
+    let name = e.target.name;
+    let value = input.value;
+
+    this.setState({
+      [name]: value
+    })
+  };
+
+  render() {
+    return (
+      <div className="App">
+        <Form handleFormSubmit={ this.handleFormSubmit } handleInputChange={ this.handleInputChange } newCandidatename={ this.state.candidatename } newappVacancy={ this.state.vacancy } newHourlyRate={ this.state.hourlyrate } newStartDate={ this.state.startdate }/>
+        <Table items={ this.state.items }/>
+      </div>
+    );
+  }
+}
+
+class Table extends React.Component {
+  render() {
+    const items = this.props.items;
+    return (
+      <div id="Table">
+        <table>
+          <tbody>
+            <tr>
+              <th>Candidate name</th>
+              <th>Applicable Vacancy</th>
+              <th>Hourly Rate</th>
+              <th>Tentative Start Date</th>
+            </tr>
+            {items.map(item => {
+              return (
+                <tr>
+                  <td>{item.candidatename}</td>
+                  <td>{item.vacancy}</td>
+                  <td>{item.hourlyrate}</td>
+                  <td>{item.startdate}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+    );
+  }
+}
+
+class Form extends React.Component {
+  render() {
+    return (
+      <div id="Form">
+        <h3>Add new Employee:</h3>  
+        <form onSubmit={this.props.handleFormSubmit}>
+          <label htmlFor="candidatename">
+          candidate Name:
+          <input id="candidatename" value={this.props.newCandidatename} type="text" name="candidatename" onChange={this.props.handleInputChange} />
+          </label>
+          <label for="vacancy">
+          Applicable Vacancy:
+          <input id="vacancy" value={this.props.newappVacancy} type="text" name="vacancy" onChange={this.props.handleInputChange} />
+          </label>
+          <label htmlFor="hourlyrate">
+          Hourly Rate:
+          <input id="hourlyrate" value={this.props.newHourlyRate} type="text" name="hourlyrate" onChange={this.props.handleInputChange} />
+          </label>
+          <label for="startdate">
+          Tentative Start Date:
+          <input id="startdate" value={this.props.newStartDate} type="date" name="startdate" onChange={this.props.handleInputChange} />
+          </label>
+          <button type="submit" value="Submit">Add Item</button>
+        </form>
+      </div>
+    );
+  }
+}
+
+ReactDOM.render(<App />, document.getElementById('root'));
+
+
+https://codepen.io/giumagnani/pen/BJMrzW

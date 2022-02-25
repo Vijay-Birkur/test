@@ -1,16 +1,38 @@
 import './App.css';
+import Login from './components/Login';
+import BFDashboard from './components/BFDashboard';
+import BreakFast from './components/BreakFast';
+import DDashboard from './components/DDashBoard';
+import Dinner from './components/Dinner';
+import LDashBoard from './components/LDashBoard';
+import Lunch from './components/Lunch';
+import Navbar from './components/Navbar';
+import testing from './components/Testing';
+import Tabledata from './Table';
+import HcdHome from './components/HcdHome';
+import HcdTask from './components/HcdTask';
+import Filechoose from './components/Filechoose';
+import Modal from './components/Modal';
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <h1>Time for Testing ReactJS-styling</h1>
-      </header>
-      <p>Conveying meaning to assistive technologies
-      Using color to add meaning only provides a visual indication, which will not be conveyed to users of assistive technologies – such as screen readers. 
-      Ensure that information denoted by the color is either obvious from the content itself (e.g. the visible text), or is included through alternative means,
-      such as additional text hidden with the .visually-hidden class.</p>
-      <button className="btn">Done</button>
+      {/* <Login /> */}
+      {/* <FormData /> */}
+      {/* <Tabledata /> */}
+      {/* <Navbar /> */}
+      {/* <BreakFast /> */}
+      {/* <Lunch /> */}
+      {/* <Dinner /> */}
+      {/* <BFDashboard /> */}
+      {/* <LDashBoard /> */}
+      {/* <DDashboard /> */}
+      {/* <HcdHome /> */}
+      {/* <HcdTask /> */}
+      <Modal />
+
+
     </div>
   );
 }
